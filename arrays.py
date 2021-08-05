@@ -70,15 +70,68 @@ class Solution:
             max_sum = max(current_sum, max_sum)
 
         return max_sum
+#_________________________________________________________
+# Reverse words in a string
+#_________________________________________________________
+def reverseWords(self, s: str) -> str:
+    final = []
+    s.strip()
+    words = s.split(" ")
+    while "" in words:
+            words.remove("")
+    while words:
+        final.append(words.pop())
+    return " ".join(final)
+#_________________________________________________________
+# nLength Compression Algorithm
+#_________________________________________________________
+def compress(chars):
+    dict = {}
+    final = ""
+    finalArray = []
+    for char in chars: 
+        if char not in dict:
+            dict[char] = 0
+        dict[char] += 1
+    for char in dict:
+        if dict[char] == 1:
+            final += char
+        if dict[char] != 1:
+            final += char
+            final += str(dict[char])
+    for char in final:
+        finalArray.append(char)
+    chars = finalArray
+    return len(chars)
 
-#_________________________________________________________
-#
-#_________________________________________________________
+# better solution?
+def compress(s):
 
-#_________________________________________________________
-#
-#_________________________________________________________
+    r = ""
+    l = len(s)
 
+    if l == 0:
+        return ""
+    
+    if l == 1:
+        return s + "1"
+
+    last = s[0]
+    count = 1
+    i = 1
+
+    while i < l:
+        if s[i] == s[i-1]:
+            count += 1
+        else: 
+            r = r + s[i-1] + str(count)
+            count = 1
+        i += 1
+
+    r = r + s[i-1] + str(count)
+
+    return r
+# compress('AAAAABBBBCCCC')//'A5B4C4'
 #_________________________________________________________
 #
 #_________________________________________________________

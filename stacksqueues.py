@@ -44,6 +44,9 @@ class Queue(object):
     def size(self):
         return len(self.items)
 
+    def peek(self):
+        return self.items[-1]
+
     
 
     
@@ -173,13 +176,65 @@ def balance_check(s):
                 return False
             
     return len(stack) == 0
+#or
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        while ("()" in s) or ("{}" in s) or ("[]" in s):
+            for i in range(len(s)):
+                if ("[]") in s:
+                    s = s.replace("[]","")
+                elif ("()") in s:
+                    s = s.replace("()","")
+                    print('t')
+                elif ("{}") in s:
+                    s = s.replace("{}","")
+        return s==""
 #_________________________________________________________
 # Queue two stacks
 #_________________________________________________________
+class Queue2Stacks(object):
 
+    def __init__(self):
+        self.input = []
+        self.output = []
 
+    def enqueue(self, element):
+        self.input.append(element)
 
+    def dequeue(self):
+        if not self.output:
+            while self.input:
+                self.output.append(self.input.pop())
+        return self.output.pop()
+#_________________________________________________________
+# Write a task manager with a queue
+#_________________________________________________________
+# task_queue = Queue()
 
+# while True:
 
+#     if task_queue.isEmpty():
+#         next_task = None
+#     else:
+#         next_task = task_queue.peek()
 
+#     print("Next task", next_task)
 
+#     command = input("A)dd task, D)o first tast, or Q)uit? ")
+
+#     if command == "A":
+#         task = input("Task: ")
+#         task_queue.enqueue(task)
+
+#     elif command == "D":
+#         print("Completed:", task_queue.dequeue())
+    
+#     elif command == "Q":
+#         break
+
+#     else:
+#         print("Invalid Command, try again.")

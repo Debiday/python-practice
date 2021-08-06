@@ -63,11 +63,30 @@ def cycle_check(node):
 #_________________________________________________________
 # Linked list reversal
 #_________________________________________________________
+def reverse(head):
 
+    #set up current, previous and next nodes
+    current = head
+    previous = None
+    nextnode = None
 
+    #until we have gone through to the end of the list
+    while current:
 
+        #copy the current node next node to a variable 'nextnode'
+        #before overwritingas the previous node for reversal
+        nextnode = current.nextnode
+
+        #reverse the pointer at the nextnode
+        current.nextnode = previous
+
+        #go one forward in the list
+        previous = current
+        current = nextnode
+    
+    return previous
 #_________________________________________________________
-# 
+# Linked list nth to last node
 #_________________________________________________________
 #_________________________________________________________
 # 

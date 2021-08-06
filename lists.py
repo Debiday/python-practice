@@ -1,3 +1,11 @@
+# Pros
+# Constant time insertion and deletion at any position
+# In comparison, arrays are O(n)(linear)
+# No need to specify size beforehand unlike array (Amortization)
+
+# Cons:
+# To access an element, need linear time to go from head to tail
+# In comparison, arrays are constant time
 #_________________________________________________________
 # Singly linked list
 #_________________________________________________________

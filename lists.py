@@ -88,12 +88,45 @@ def reverse(head):
 #_________________________________________________________
 # Linked list nth to last node
 #_________________________________________________________
+def nth_to_last_node(n, head):
+
+    # current = head
+
+    # while current.nextnode != None:
+    #     if current.nextnode.value == n:
+    #         return current.nextnode.value
+
+    left_pointer = head
+    right_pointer = head
+
+    for i in range(n-1):
+
+        if not right_pointer.nextnode: 
+            raise LookupError('Error: n is larger than the linked list')
+
+        right_pointer = right_pointer.nextnode
+
+    while right_pointer.nextnode:
+        #if its not none, i.e. at the end
+        left_pointer = left_pointer.nextnode
+        right_pointer = right_pointer.nextnode
+
+    return left_pointer
 #_________________________________________________________
-# 
+# Implement a singly linked list
 #_________________________________________________________
-#_________________________________________________________
-# 
-#_________________________________________________________
-#_________________________________________________________
-# 
-#_________________________________________________________
+#practice again!
+class Node(object):
+
+    def __init__(self, value):
+
+        self.value = value
+        self.nextnode = None
+
+class DoubleNode(object):
+
+    def __init__(self, value):
+
+        self.value = value
+        self.nextnode = None
+        self.prevnode = None

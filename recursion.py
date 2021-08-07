@@ -20,3 +20,17 @@ def rec_sum(n):
 
     else: 
         return n + rec_sum(n-1)
+#_________________________________________________________
+# Example problems: Add indidual digits of an int
+#_________________________________________________________
+def sum_func(n):
+
+    split_num = str(n).split()    
+
+    #base case
+    if n == 0:
+        return 0
+
+    else: 
+        return split_num
+

@@ -1,36 +1,58 @@
-#_________________________________________________________
+# _________________________________________________________
 # Recursion basics recap
-#_________________________________________________________
+# _________________________________________________________
 def fact(n):
 
-    #base case
+    # base case
     if n == 0:
         return 1
 
     else:
         return n * fact(n-1)
-#_________________________________________________________
+# _________________________________________________________
 # Example problems: Sum to N (e.g. 4 3 2 1 0)
-#_________________________________________________________
+# _________________________________________________________
+
+
 def rec_sum(n):
 
-    #base case
+    # base case
     if n == 0:
         return 0
 
-    else: 
+    else:
         return n + rec_sum(n-1)
-#_________________________________________________________
+# _________________________________________________________
 # Example problems: Add indidual digits of an int
-#_________________________________________________________
+# _________________________________________________________
 def sum_func(n):
 
-    split_num = str(n).split()    
+    str_num = str(n)
+    #TODO: Remember this is how to split into chars
+    split = list(str_num)
+    total = 0
 
-    #base case
+    # base case
     if n == 0:
         return 0
 
-    else: 
-        return split_num
+    for num in split:
+        total += int(num)
+
+    return total
+
+# or recursively!
+def sum_func2(n):
+
+    if n == 0: 
+        return 0
+
+    else:
+        return n%10 + sum_func2(n-1)    
+
+
+
+
+
+
 

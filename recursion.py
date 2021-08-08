@@ -21,7 +21,7 @@ def rec_sum(n):
     else:
         return n + rec_sum(n-1)
 # _________________________________________________________
-# Example problems: Add indidual digits of an int
+# Example problems: Add individual digits of an int
 # _________________________________________________________
 def sum_func(n):
 
@@ -66,19 +66,80 @@ def word_split(phrase, list_of_words, output = None):
     
     return output
 # _________________________________________________________
-# Determine if its possible to split the string to make individual words in list
+# Reverse a string
 # _________________________________________________________
-def word_split(phrase, list_of_words, output = None):
+def reverse(s):
 
+    final = []
 
+    if len(s) == 1:
+        return s
 
-# _________________________________________________________
-# 
-# _________________________________________________________
+    else:
+        for char in s:
+            final.insert(0, char)
+        #todo: turn list into string
+        return "".join(final)
 
+#recursively...
+def reverse2(s):
+
+    # base case: how to know you are done, not edge case
+    # e.g. 'abc' ------> 'c' + rev('ab') 
+    # one element left in string
+
+    if len(s) <= 1:
+        return s
+
+    # recursion
+
+    return reverse(s[1:]) + s[0]
 # _________________________________________________________
-# 
+# Return all permutations of s
 # _________________________________________________________
+# def permute(s):
+#     output = []
+    
+#     if len(s) <= 1:
+#         output=[s]
+#     else:
+#         for i, let in enumerate(s):
+#             for perm in permute(s[:i]+s[i+1:]):
+#                 output+=[let+perm]
+#     return output
+
+# recursively...
+# def permute2(s):
+
+#     out = []
+    
+#     # base case
+#     if len(s) == 1:
+#         out = [s]
+
+#     else: 
+
+#         for i, let in enumerate(s):
+
+#             #for every permutation resulting from step 2 & 3
+#             for perm in permute2( s[:i] + s[i+1:]):
+#                 print("perm is:", perm, "i is:", i, "out is:", out)
+
+#                 # add it to the output
+#                 out += [let + perm]
+
+#         return out
+def permute(s):
+    output = []
+    
+    if len(s) <= 1:
+        output=[s]
+    else:
+        for i, let in enumerate(s):
+            for perm in permute(s[:i]+s[i+1:]):
+                output+=[let+perm]
+                print("perm is:", perm, "i is:", i, "out is:", output)
+    return output
 # _________________________________________________________
 # 
 # _________________________________________________________

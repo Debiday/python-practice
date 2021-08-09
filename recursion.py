@@ -172,39 +172,60 @@ def fib_iter(n):
 # _________________________________________________________
 # Coin change problem (classic and memo)
 # _________________________________________________________
-# Goal: minimum amount of coins used
+# Goal: fewest num of coins used
 def rec_coin(target, coins):
-
     
+    # default value set to target
+    min_coins = target
 
-    # sorted_coins = sorted(coins, reverse=True)
-    # total = 1
+    # base case
+    if target in coins:
+        return 1
 
-    # for coin in sorted_coins:
-    #     if coin <= target:
-    #         total += 1
-    #         rec_coin((target - coin), coins)
-    # return total
+    else:
 
+        # for every coin value that is <= target
+        # list comprehension
+        for i in [c for c in coins if c <= target]:
+            
+            # add a coin count + recursive call
+            num_coins = 1 + rec_coin(target-i, coins)
 
+            if num_coins < min_coins:
 
+                min_coins = num_coins
 
+    return min_coins    
+    # inefficient but it'll work!
 
-    
+# todo: dynamic, much faster but more space
+def rec_coin_dynam(target, coins, known_results):
 
-# _________________________________________________________
-# 
-# _________________________________________________________
-# _________________________________________________________
-# 
-# _________________________________________________________
+    # default output to target
+    min_coins = target
 
+    #base case
+    if target in coins: 
+        known_results[target] = 1
+        return 1
 
+    # return a known result if it happens to be greater than 1
+    elif known_results[target] > 0:
+        return known_results[target]
 
+    else:
 
+        # for every coin value is <= target
 
+        for i in [c for c in coins if c <= target]:
 
+            num_coins = 1 + rec_coin_dynam(target-i, coins, known_results)
 
+            if num_coins < min_coins:
 
+                min_coins = num_coins
 
+                # reset known results
+                known_results[target] = min_coins
 
+    return min_coins

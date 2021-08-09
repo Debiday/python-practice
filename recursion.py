@@ -109,26 +109,6 @@ def reverse2(s):
 #     return output
 
 # recursively...
-# def permute2(s):
-
-#     out = []
-    
-#     # base case
-#     if len(s) == 1:
-#         out = [s]
-
-#     else: 
-
-#         for i, let in enumerate(s):
-
-#             #for every permutation resulting from step 2 & 3
-#             for perm in permute2( s[:i] + s[i+1:]):
-#                 print("perm is:", perm, "i is:", i, "out is:", out)
-
-#                 # add it to the output
-#                 out += [let + perm]
-
-#         return out
 def permute(s):
     output = []
     
@@ -141,11 +121,77 @@ def permute(s):
                 print("perm is:", perm, "i is:", i, "out is:", output)
     return output
 # _________________________________________________________
-# 
+# Fibonnaci multiple ways, return nth fib number
 # _________________________________________________________
+# todo: Recursively
+def fib_rec(n):
+
+    # base case
+    if n <= 1:
+        return n
+
+    # recursive case
+    else:
+        return fib_rec(n-1) + fib_rec(n-2)
+
+# todo: Dynamically
+# instantiate cache information (memoization)
+
+# cache
+n = 10 # need to edit
+cache = [None] * (n + 1)
+
+def fib_dyn(n):
+
+    # base case
+    if n == 0 or n == 1:
+        return n
+
+    #check cache
+    if cache[n] != None:
+
+        return cache[n]
+
+    # keep setting cache
+    cache[n] = fib_dyn(n-1) + fib_dyn(n-2)
+    
+    return cache[n]
+
+# todo: Iteratively
+# todo: consider tuple unpacking
+def fib_iter(n):
+
+    a, b = 0, 1
+
+    for i in range(n):
+
+        a, b = b, a + b # a very pythonic solution
+        # print(a)
+    
+    return a
 # _________________________________________________________
-# 
+# Coin change problem (classic and memo)
 # _________________________________________________________
+# Goal: minimum amount of coins used
+def rec_coin(target, coins):
+
+    
+
+    # sorted_coins = sorted(coins, reverse=True)
+    # total = 1
+
+    # for coin in sorted_coins:
+    #     if coin <= target:
+    #         total += 1
+    #         rec_coin((target - coin), coins)
+    # return total
+
+
+
+
+
+    
+
 # _________________________________________________________
 # 
 # _________________________________________________________

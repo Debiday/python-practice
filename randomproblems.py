@@ -1,4 +1,6 @@
+#_____________________________________________________________
 # count reversed concatted tiny numbers < k
+#_____________________________________________________________
 def countTinyPairs(a, b, k):
     
     # goal:
@@ -24,8 +26,9 @@ def countTinyPairs(a, b, k):
             tiny += 1
     return tiny
 
-
-#is Zigzag
+#_____________________________________________________________
+# is Zigzag
+#_____________________________________________________________
 def isZigzag(numbers):
     # goal: construct array numbers.length - 2
     # pattern: bigger than, smaller than 
@@ -40,4 +43,28 @@ def isZigzag(numbers):
             else:
                 final.append(0)
         return final
-                
+
+
+#_____________________________________________________________
+# jumping on clouds
+#_____________________________________________________________                
+def jumpingOnClouds(c):
+    # jump in multiples of two!
+
+    current_position = 0
+    number_of_jumps = 0
+    last_cloud_postion = len(c)-1
+    last_second_postion = len(c)-2
+    
+    while current_position<last_second_postion:
+        #Checking if the cloud next to the next cloud is thunderstorm
+        if c[current_position+2] == 0:
+            current_position += 2
+        else:
+            current_position += 1
+        number_of_jumps += 1
+    #Checking if we are in the last cloud or the last second cloud
+    if current_position != last_cloud_postion:
+        number_of_jumps += 1
+        
+    return number_of_jumps

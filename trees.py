@@ -40,6 +40,21 @@ def getRightChild(root):
 # OO Tree
 # _________________________________________________________
 class BinaryTree(object):
+    """
+    >>> r =  BinaryTree(3)
+    >>> insertLeft(r, 4)
+    [3, [4, [], []], []]
+    >>> insertLeft(r, 5)
+    [3, [5, [4, [], []], []], []]
+    >>> insertRight(r, 6)
+    [3, [5, [4, [], []], []], [6, [], []]]
+    >>> insertRight(r, 7)
+    [3, [5, [4, [], []], []], [7, [], [6, [], []]]]
+    >>> l = getLeftChild(r)
+    >>> print(l)
+    [5, [4, [], []], []]
+    >>> setRootVal(l, 9)
+    """
 
     def __init__(self, rootObj):
 
@@ -83,6 +98,44 @@ class BinaryTree(object):
 # _________________________________________________________
 # three tree traversals
 # _________________________________________________________
+#preorder function (outside implementation)
+def preorder(tree):
+    if tree: 
+        print(tree.getRootVal())
+        preorder(tree.getLeftChild())
+        preorder(tree.getRightChild())
+
+#preorder method(inside implementation)
+def preorder2(self):
+    print(self.key)
+    if self.leftChild:
+        self.leftChild.preorder()
+    if self.rightChild:
+        self.rightChild.preorder()
+
+#postorder
+def postorder(tree):
+    if tree != None:
+        postorder(tree.getLeftChild())
+        postorder(tree.getRightChild())
+        print(tree.getRootVal())
+
+#inorder
+def inorder(tree):
+    if tree != None:
+        inorder(tree.getLeftChild())
+        print(tree.getRootVal())
+        inorder(tree.getRightChild())
+
+# _________________________________________________________
+# priority queues with binary heaps
+# _________________________________________________________
+
+
+
+
+
+
 
 
 

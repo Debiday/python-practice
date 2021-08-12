@@ -68,3 +68,47 @@ def jumpingOnClouds(c):
         number_of_jumps += 1
         
     return number_of_jumps
+
+# dropbox
+
+def textEditor1_2(queries):
+    #apply result, then append the current state
+    print(queries[1])
+    
+    result = ""
+    final_list = []
+    index = 0
+    
+    for action in queries:
+        if action[0] == "APPEND":
+            if action[1] == "START. ":
+                index = 0
+                result = "START. " + result
+                final_list.append(result)
+            elif action[1] == "END.":
+                result += "END." 
+                index = len(result)-1
+                final_list.append(result)
+            else:
+                result = result[0: index] + action[1] + result[index: len(result)]
+                index += len(action[1])
+                final_list.append(result)
+        elif action[0] == "MOVE":
+            index = int(action[1])
+        elif action[0] == "BACKSPACE" and index != 0:
+            result = result[:index-1] + result[index:]
+            index -= 1
+            final_list.append(result)
+        elif action[0] == "BACKSPACE" and index == 0:
+            result = ""
+            final_list.append(result)
+        elif action[0] == "SELECT":
+            if int(action[1]) == int(action[2]):
+                index = int(action[1])
+            result = result[:int(action[1])+2] + result[int(action[2])-1:]
+            index = int(action[1])
+            
+            
+    return final_list
+    
+

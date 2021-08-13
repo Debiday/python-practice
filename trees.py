@@ -130,6 +130,30 @@ def inorder(tree):
 # _________________________________________________________
 # priority queues with binary heaps
 # _________________________________________________________
+# keep the tree balanced by creating a complete tree,
+# each level has all of its nodes
+# 2*parent position to get left child and 2*p + 1 for right  
+
+class BinHeap:
+
+    def __init__(self):
+        self.heapList = [0]
+        self.currentSize = 0
+
+#methods for insertion
+def percUp(self, i):
+    while i // 2 > 0:
+        if self.heapList[i] < self.heapList[i // 2]:
+            tmp = self.heapList[i //2]
+            self.heapList[i // 2] = self.heapList[i]
+            self.heapList[i] = tmp
+        i = i // 2
+    
+def insert(self, k):
+    self.heapList.append(k)
+    self.currentSize = self.currentSize + 1
+    self.percUp(self.currentSize)
+
 
 
 

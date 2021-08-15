@@ -190,6 +190,77 @@ def buildHeap(self, alist):
         self.percDown(i)
         i = i - 1
 
+# _________________________________________________________
+# binary search trees (implementation)
+# _________________________________________________________
+# bst property: to the left, everything less in the box to the left
+# only refers to the direct parent
+
+class BinarySearchTree:
+
+    def __init__(self):
+        self.root = None
+        self.size = 0
+
+    def length(self):
+        return self.size
+    
+    #allows you to use the built in search method on the BST
+    def __len__(self):
+        return self.size
+
+    def __iter__(self):
+        return self.root.__iter__()
+
+# _________________________________________________________
+# tree node recap (how it works and basic functions)
+# _________________________________________________________
+class TreeNode: 
+
+    def __init__(self, key, val, left=None, right=None, parent=None):
+        self.key = key
+        self.payload = val
+        self.leftChild = left
+        self.rightChild = right
+        self.parent = parent
+
+    def hasLeftChild(self):
+        return self.leftChild
+
+    def hasRightChild(self):
+        return self.rightChild
+
+    def isLeftChild(self):
+        return self.parent and self.parent.leftChild == self
+
+    def isRightChild(self):
+        return self.parent and self.parent.rightChild == self
+
+    def isRoot(self):
+        return not self.parent
+
+    def isLeaf(self):
+        return not (self.rightChild or self.leftChild)
+
+    def hasAnyChildren(self):
+        return self.rightChild or self.leftChild
+
+    def hasBothChildren(self):
+        return self.rightChild and self.leftChild
+
+    def replaceNodeData(self, key, value, lc, rc):
+        self.key = key
+        self.payload = value
+        self.leftChild = lc
+        self.rightChild = rc
+        if self.hasLeftChild():
+            self.leftChild.parent = self
+        if self.hasRightChild():
+            self.rightChild.parent = self
+
+    
+
+
 
 
 

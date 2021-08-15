@@ -1,3 +1,3 @@
-Just me revising Python Data Structures and Understanding the Algorithms for more advanced data structures! 🧱 
+Just me revisiting Python Data Structures and Understanding the Algorithms for more advanced data structures! 🧱 
 
 I started this course a few months but didn't have the mind space to complete it until now. Good material for learning, as the explanations by Jose Portilla in [Python for Data Structures, Algorithms, and Interviews](https://www.udemy.com/course/python-for-data-structures-algorithms-and-interviews/) are really descriptive. 

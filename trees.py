@@ -270,7 +270,7 @@ class BinarySearchTree:
 
     def put(self, key, val):
         if self.root:
-            self._pout(key, val, self.root)
+            self._put(key, val, self.root)
         else:
             self.root = TreeNode(key, val)
         self.size = self.size + 1
@@ -312,10 +312,10 @@ class BinarySearchTree:
         else:
             return self._get(key, currentNode.rightChild)
         
-    def _getitem_(self, key):
+    def __getitem__(self, key):
         return self.get(key)
 
-    def _contains_(self, key):
+    def __contains__(self, key):
         if self._get(key, self.root):
             return True
         else:
@@ -337,7 +337,7 @@ class BinarySearchTree:
         else:
             raise KeyError('Error, key not in tree')
 
-    def _delitem_(self, key):
+    def __delitem__(self, key):
         self.delete(key)
 
     def spliceOut(self):
@@ -435,9 +435,14 @@ class BinarySearchTree:
                                     currentNode.rightChild.leftChild,
                                     currentNode.rightChild.rightChild)
                 
-
-
-
+# 🐝 python-d-and-a$python3 -i trees.py 
+# >>> mytree = BinarySearchTree()
+# >>> mytree[3]="red"
+# >>> mytree[4]="blue"
+# >>> mytree[6]="yellow"
+# >>> mytree[2]="at"
+# >>> print(mytree[6])
+# yellow
 
     
 

@@ -268,14 +268,14 @@ class BinarySearchTree:
     def length(self):
         return self.size
 
-    def put(self, key, val):
+    def put(self, key, val): #code refactoring, looks nicer!
         if self.root:
             self._put(key, val, self.root)
         else:
             self.root = TreeNode(key, val)
         self.size = self.size + 1
 
-    def _put(self, key, val, currentNode):
+    def _put(self, key, val, currentNode): #actually does the work
         if key < currentNode.key:
             if currentNode.hasLeftChild():
                 self._put(key, val, currentNode.leftChild)
@@ -444,7 +444,25 @@ class BinarySearchTree:
 # >>> print(mytree[6])
 # yellow
 
-    
+# _________________________________________________________
+# check if BST
+# _________________________________________________________
+# if BST then inorder traversal = sorted values
+
+tree_vals = []
+
+def inorder(tree):
+    if tree != None:
+        inorder(tree.getLeftChild())
+        tree_vals.append(tree.getRootVal())
+        inorder(tree.getRightChild())
+
+def sort_check(tree_vals):
+    return tree_vals == sorted(tree_vals)
+
+# inorder(tree)
+# sort_check(tree_vals)
+
 
 
 

@@ -226,12 +226,94 @@ def gap_insertion_sort(arr, start, gap):
 # _________________________________________________________
 # merge sort
 # _________________________________________________________
+#recursive algo that continually splits the list in half
+def merge_sort(arr):
+
+    #base case
+    if len(arr) > 1:
+
+        mid = int(len(arr)/2)
+        lefthalf = arr[:mid]
+        righthalf = arr[mid:]
+
+        #recursive
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
+
+        #counters
+        i = 0 
+        j = 0
+        k = 0
+
+        while i < len(lefthalf) and j < len(righthalf):
+
+            if lefthalf[i] < righthalf[j]:
+                arr[k] = lefthalf[i]
+
+                i += 1
+            
+            else:
+                arr[k] = righthalf[j]
+                j += 1
+            
+            k += 1
+            
+        while i < len(lefthalf):
+            arr[k] = lefthalf[i]
+            i += 1
+            k += 1
+
+        while j < len(righthalf):
+            arr[k] = righthalf[j]
+            j += 1
+            k += 1
+
+    print('Merging ', arr)
 # _________________________________________________________
-# 
+# quick sort
 # _________________________________________________________
-# _________________________________________________________
-# 
-# _________________________________________________________
-# _________________________________________________________
-# 
-# _________________________________________________________
+#pivot value
+def quick_sort(arr):
+    
+    quick_sort_help(arr, 0, len(arr)-1)
+
+def quick_sort_help(arr, first, last):
+    
+    if first < last:
+
+        splitpoint = partition(arr, first, last)
+
+        quick_sort_help(arr, first, splitpoint-1)
+        quick_sort_help(arr, splitpoint+1, last)
+
+def partition(arr, first, last):
+    
+    pivotvalue = arr[first]
+
+    leftmark = first+1
+    rightmark = last 
+
+    done = False
+
+    while not done:
+
+        while leftmark <= rightmark and arr[leftmark] <= pivotvalue:
+
+            leftmark += 1
+
+        while arr[rightmark] >= pivotvalue and rightmark >= leftmark:
+            rightmark -= 1
+
+        if rightmark < leftmark:
+            done = True
+
+        else: 
+            temp = arr[leftmark]
+            arr[leftmark] = arr[rightmark]
+            arr[rightmark] = temp
+
+    temp = arr[first]
+    arr[first] = arr[rightmark]
+    arr[rightmark] = temp
+
+    return rightmark

@@ -65,3 +65,16 @@ class Graph:
 
     def __contains__(self, n):
         return n in self.vertList
+
+# g = Graph()
+
+# for i in range(6):
+#     g.addVertex(i)
+
+# g.addEdge(0,1,2)
+
+# for vertex in g:
+#     print(vertex)
+#     print(vertex.getConnections())
+#     print('\n')
+
